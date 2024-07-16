@@ -16,6 +16,9 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
       database: await this.config.get('db_name'),
       password: await this.config.get('db_password'),
       port: await this.config.get<number>('db_port'),
+      ssl: {
+        rejectUnauthorized: false,
+      },
     });
 
     await this.client.connect();
